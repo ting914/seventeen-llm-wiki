@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEVENTEEN 十年特刊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE  occasion: a glossy fashion-magazine special issue for newcomers, confident and airy
+   IDEA   "THE DECADE ISSUE": each slide is a magazine spread with masthead, folios, pull-figures, photo layouts
+   PICTURE the group's own album covers and concept photos, cropped big like editorial spreads
+   COLOUR paper white, ink #15141a, rose quartz #f4c5c4 and serenity #93a9d2 as flat fields, deep rose #c2465a for the point that matters
+   TYPE   Times New Roman for masthead, figures and Latin text (user request), Noto Serif TC 900 for Chinese headlines, Noto Sans TC body
+   LAYOUT laptop: one spread per screen, snap scrolling, arrow keys; under 820px: spreads stack and flow as a long-read */
+:root{color-scheme:light;--paper:#ffffff;--ink:#15141a;--mute:#5c5866;--rose:#f4c5c4;--sky:#93a9d2;--deep:#c2465a;--line:#15141a22}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%;margin:0}
+body{background:var(--paper);color:var(--ink);font:17px/1.65 "Noto Sans TC",system-ui,sans-serif;overflow-x:clip}
+img{max-width:100%;display:block}
+.deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.s{position:relative;min-height:100%;scroll-snap-align:start;padding:clamp(28px,5vh,60px) max(5vw,16px) 70px;display:grid;overflow:hidden}
+.folio{position:absolute;left:max(5vw,16px);right:calc(max(5vw,16px) + 108px);bottom:20px;display:flex;justify-content:space-between;font:400 13px/1 "Times New Roman",Times,serif;color:var(--mute)}
+.folio b{font-weight:700;color:var(--ink)}
+.dk .folio,.dk .folio b{color:#fff}
+h1,h2,h3{font-family:"Noto Serif TC",serif;font-weight:900;line-height:1.08;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(32px,4.4vw,62px)}
+h3{font-size:clamp(19px,1.7vw,24px);line-height:1.25}
+p{margin:0 0 .8em;max-width:36em}
+.kick{font:italic 400 clamp(18px,1.6vw,24px)/1.3 "Times New Roman",Times,serif;color:var(--deep);margin-bottom:12px}
+.big{font:900 clamp(64px,10vw,170px)/.85 "Times New Roman",Times,serif;letter-spacing:-.04em}
+.note{font-size:13px;color:var(--mute)}
+.fill{width:100%;height:100%;object-fit:cover}
+ul.facts{list-style:none;padding:0;margin:0}
+ul.facts li{padding:9px 0;border-top:1px solid var(--line);font-size:16px}
+ul.facts li b{font-family:"Times New Roman",Times,"Noto Serif TC",serif;font-size:1.12em;margin-right:.5em}
+.cover{background:#111;color:#fff;padding:0}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#000a 0%,#0000 34%,#0000 50%,#000d 100%)}
+.cv{position:relative;z-index:1;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(20px,4vh,44px) max(5vw,16px) 56px;min-height:100%}
+.mast{font:900 clamp(60px,13.5vw,230px)/.82 "Times New Roman",Times,serif;letter-spacing:-.045em;text-align:center}
+.mrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:italic 400 clamp(14px,1.3vw,19px) "Times New Roman",Times,serif;border-top:1px solid #fff8;border-bottom:1px solid #fff8;padding:6px 0;margin-top:10px}
+.cvt{align-self:end;margin-bottom:26px}
+.cvt h1{font-size:clamp(32px,4.4vw,64px)}
+.lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-self:end}
+.lines div{border-top:2px solid var(--rose);padding-top:10px;font-size:15px}
+.lines strong{display:block;font:900 clamp(19px,1.9vw,27px)/1.2 "Noto Serif TC",serif;margin-bottom:4px}
+.two{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:stretch}
+.rose{background:var(--rose)}
+.sky{background:var(--sky)}
+.ink{background:var(--ink);color:#fff}
+.ink .kick{color:var(--rose)}
+.ink .note{color:#fffc}
+.ink ul.facts li{border-color:#fff3}
+.mid{align-self:center}
+.ph{position:relative;min-height:280px;overflow:hidden}
+.ph>img{position:absolute;inset:0}
+.cap{position:absolute;left:12px;bottom:12px;background:#fff;color:var(--ink);font-size:13px;padding:3px 9px;z-index:1}
+.pic{display:flex;flex-direction:column;justify-content:center;gap:10px}
+.pic figure{margin:0;position:relative;align-self:center;max-width:100%}
+.pic>figure>img{width:auto;height:auto;max-width:100%;max-height:calc(100vh - 150px)}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:stretch}
+.row2 figure,.split figure{width:100%}
+.row2 img,.split img{width:100%;height:auto}
+.split{display:grid;grid-template-columns:minmax(0,1.48fr) minmax(0,1fr);gap:10px;align-items:start}
+.split .col{display:grid;gap:10px}
+.sq{aspect-ratio:1}
+.mosaic{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:10px;min-height:360px}
+.mosaic .ph{min-height:0}
+.tall{grid-row:span 2}
+.card{padding:16px;display:grid;align-content:end;font-size:14px}
+.card b{display:block;font:900 clamp(26px,2.6vw,40px)/1 "Times New Roman",Times,serif;margin-bottom:6px}
+.dict{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink);margin:28px 0 0}
+.dict div{padding:24px 20px 26px 0;border-bottom:1px solid var(--line)}
+.dict div:not(:nth-child(4n+1)){padding-left:20px;border-left:1px solid var(--line)}
+.dict dt{font:900 clamp(22px,2.2vw,32px)/1.2 "Noto Serif TC",serif;margin-bottom:10px}
+.dict dd{margin:0;font-size:17px}
+.tl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:28px}
+.era{border-top:6px solid var(--ink);padding-top:12px}
+.era:nth-child(odd){border-color:var(--deep)}
+.era .yr{font:900 clamp(28px,3vw,44px)/1 "Times New Roman",Times,serif}
+.era h3{font-size:clamp(18px,1.6vw,22px);margin:8px 0 12px}
+.era ol{margin:0;padding:0;list-style:none;font-size:15px;line-height:1.6}
+.covers{display:flex;gap:8px;margin-top:12px}
+.covers img{width:clamp(58px,6.5vw,104px);aspect-ratio:1;height:auto;object-fit:cover}
+.jump{display:flex;align-items:baseline;gap:16px;margin:14px 0 16px;flex-wrap:wrap}
+.jump .n{font:900 clamp(52px,6.5vw,104px)/.9 "Times New Roman",Times,serif}
+.jump .ar{font:400 clamp(28px,3vw,46px) "Times New Roman",Times,serif;color:var(--rose)}
+.jump .note{max-width:15em}
+.stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0}
+.stat div{border-top:2px solid currentColor;padding-top:8px;font-size:14px}
+.stat b{display:block;font:900 clamp(30px,3.2vw,48px)/1 "Times New Roman",Times,"Noto Serif TC",serif;margin-bottom:6px}
+.chap{display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:8px 14px;margin:14px 0}
+.chap span{font:italic 700 20px/1.4 "Times New Roman",Times,"Noto Serif TC",serif;color:var(--deep)}
+.ink .chap span{color:var(--rose)}
+.bars{margin-top:22px;display:grid;gap:7px;max-width:1100px}
+.bar{display:grid;grid-template-columns:11em minmax(0,1fr) 6.4em;gap:12px;align-items:center;font-size:14px}
+.bar i{display:block;height:22px;background:var(--sky)}
+.bar.hi i{background:var(--deep)}
+.bar .v{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar .y{color:var(--mute);font-size:13px}
+.thread{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:24px}
+.thread>div{border-left:2px solid var(--deep);padding-left:14px;font-size:15px}
+.thread .yr{font:900 30px/1 "Times New Roman",Times,serif;margin-bottom:6px}
+.thread h3{font-size:20px;margin-bottom:6px}
+.who{font-size:13px;color:var(--mute);display:block;margin-top:6px}
+.picks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:22px 0 28px;border-top:2px solid #fff}
+.picks div{padding:14px 14px 14px 0;border-right:1px solid #fff3}
+.picks div+div{padding-left:14px}
+.picks div:last-child{border-right:0}
+.picks .yr{font:400 14px "Times New Roman",Times,"Noto Sans TC",serif;color:var(--rose)}
+.picks b{display:block;font:900 clamp(20px,1.9vw,28px)/1.15 "Times New Roman",Times,serif;margin:6px 0}
+.picks span{font-size:14px}
+.nav{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:5}
+.nav a{width:10px;height:10px;border-radius:50%;background:#8c8896;border:1px solid #fff}
+.nav a.on{background:var(--deep);transform:scale(1.35)}
+.btns{position:fixed;right:max(5vw,16px);bottom:6px;display:flex;gap:6px;z-index:5}
+.btns button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);background:#fffffff0;font:400 22px/1 "Times New Roman",Times,serif;cursor:pointer;color:var(--ink)}
+.btns button:hover{background:var(--rose)}
+.btns button:focus-visible,.nav a:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}}
+@media (max-width:820px){
+ .deck{scroll-snap-type:none}
+ .s{min-height:auto}
+ .cover{min-height:100svh}
+ .two{grid-template-columns:minmax(0,1fr)}
+ .two>.ph,.two>.mosaic,.two>.pic{order:-1}
+ .pic>figure>img{max-height:70vh}
+ .ph{min-height:300px}
+ .lines,.stat{grid-template-columns:minmax(0,1fr)}
+ .dict{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .dict div{padding:12px 10px 12px 0!important;border-left:0!important}
+ .tl,.thread{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .picks{grid-template-columns:minmax(0,1fr)}
+ .picks div{border-right:0;border-bottom:1px solid #fff3;padding-left:0!important}
+ .bar{grid-template-columns:7.5em minmax(0,1fr) 5.8em;font-size:13px}
+ .nav{display:none}
+ .folio{right:max(5vw,16px)}
+ .btns{display:none}
+}
+@media (max-width:480px){.tl,.thread,.dict{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<section class="s cover dk" id="s1" aria-label="封面">
+ <img src="img/group-cover.jpg" alt="SEVENTEEN 13 位成員的團體照">
+ <div class="cv">
+  <div>
+   <div class="mast">SEVENTEEN</div>
+   <div class="mrow"><span>The Decade Issue</span><span>2015 — 2025</span><span>韓文專輯入門特輯</span></div>
+  </div>
+  <div class="cvt"><h1>十年專輯之旅：<br>從 17 Carat 到 Happy Burstday</h1></div>
+  <div class="lines">
+   <div><strong>20 張專輯，5 個時期</strong>一張圖看懂 SEVENTEEN 的時間軸</div>
+   <div><strong>〈Don't Wanna Cry〉</strong>2017 年的成績突破是怎麼發生的</div>
+   <div><strong>走出影子</strong>Face the Sun 與十週年的「重生」故事</div>
+  </div>
+ </div>
+ <div class="folio"><span>SEVENTEEN 十年特刊</span><b>1 / 15</b></div>
+</section>
+
+<section class="s two" id="s2" aria-label="SEVENTEEN 是誰">
+ <div class="mid">
+  <div class="kick">Who are they</div>
+  <h2>13 個人，<br>自己寫歌的偶像團體</h2>
+  <p style="margin-top:22px">SEVENTEEN 是 PLEDIS Entertainment 的 13 人男團。出道前，成員就在網路節目《Seventeen TV》露面，2015 年 5 月 26 日正式出道。</p>
+  <ul class="facts">
+   <li><b>自製型偶像</b>成員參與作詞、製作和編舞；WOOZI 參與了每一首歌的製作。</li>
+   <li><b>先決定故事</b>WONWOO 說過，每次發片前，成員會先開會決定這次想說什麼故事。</li>
+   <li><b>CARAT</b>SEVENTEEN 粉絲的名稱，後面的故事裡會再出現。</li>
+  </ul>
+ </div>
+ <div class="pic"><figure><img src="img/group-intro.jpg" alt="SEVENTEEN 團體照"><span class="cap">SEVENTEEN</span></figure></div>
+ <div class="folio"><span>Who are they</span><b>2 / 15</b></div>
+</section>
+
+<section class="s rose" id="s3" aria-label="名詞小辭典">
+ <div class="mid">
+  <div class="kick">Glossary</div>
+  <h2>看懂這份特刊的 8 個詞</h2>
+  <dl class="dict">
+   <div><dt>迷你專輯</dt><dd>收錄歌曲比較少的專輯。SEVENTEEN 出了 12 張。</dd></div>
+   <div><dt>正規專輯</dt><dd>完整長度的專輯，十年來出了 5 張。</dd></div>
+   <div><dt>特別專輯</dt><dd>不算在迷你或正規編號裡的專輯，例如 Director's Cut。</dd></div>
+   <div><dt>改版專輯</dt><dd>在原專輯裡加入新歌後重新發行。</dd></div>
+   <div><dt>音樂節目一位</dt><dd>韓國電視台每週的音樂節目選出的第 1 名。</dd></div>
+   <div><dt>大賞</dt><dd>年末頒獎典禮的最高獎項，例如「年度專輯」。</dd></div>
+   <div><dt>預購</dt><dd>專輯正式發行前的訂購量，常拿來衡量人氣。</dd></div>
+   <div><dt>主打歌</dt><dd>每張專輯主要宣傳、上節目表演的那首歌。</dd></div>
+  </dl>
+ </div>
+ <div class="folio"><span>Glossary</span><b>3 / 15</b></div>
+</section>
+
+<section class="s" id="s4" aria-label="十年時間軸">
+ <div class="mid">
+  <div class="kick">The map</div>
+  <h2>一張圖看十年：5 個時期</h2>
+  <div class="tl">
+   <div class="era"><div class="yr">2015</div><h3>出道與起步</h3><ol><li>17 Carat</li><li>Boys Be</li><li>Love &amp; Letter</li><li>Going Seventeen</li></ol><div class="covers"><img src="img/17carat-cover.jpg" alt="17 Carat 封面"></div></div>
+   <div class="era"><div class="yr">2017</div><h3>突破與成長</h3><ol><li>Al1</li><li>Teen, Age</li><li>Director's Cut</li><li>You Make My Day</li><li>You Made My Dawn</li><li>An Ode</li></ol><div class="covers"><img src="img/al1-cover.jpg" alt="Al1 封面"><img src="img/anode-cover.jpg" alt="An Ode 封面"></div></div>
+   <div class="era"><div class="yr">2020</div><h3>百萬銷量與 Power of Love</h3><ol><li>Heng:garæ</li><li>; [Semicolon]</li><li>Your Choice</li><li>Attacca</li></ol><div class="covers"><img src="img/henggarae-cover.jpg" alt="Heng:garæ 封面"><img src="img/attacca-cover.jpg" alt="Attacca 封面"></div></div>
+   <div class="era"><div class="yr">2022</div><h3>Face the Sun 與巔峰</h3><ol><li>Face the Sun</li><li>FML</li><li>Seventeenth Heaven</li></ol><div class="covers"><img src="img/fml-cover.jpg" alt="FML 封面"></div></div>
+   <div class="era"><div class="yr">2024</div><h3>十週年</h3><ol><li>17 Is Right Here</li><li>Spill the Feels</li><li>Happy Burstday</li></ol><div class="covers"><img src="img/17irh-cover.jpg" alt="17 Is Right Here 封面"><img src="img/hb-cover.jpg" alt="Happy Burstday 封面"></div></div>
+  </div>
+ </div>
+ <div class="folio"><span>The map</span><b>4 / 15</b></div>
+</section>
+
+<section class="s two" id="s5" aria-label="2015–2016 出道與起步">
+ <div class="pic"><figure><img src="img/17carat-group.jpg" alt="17 Carat 時期的團體照"><span class="cap">17 Carat，2015</span></figure></div>
+ <div class="mid">
+  <div class="big">2015</div>
+  <div class="kick" style="margin-top:14px">Chapter one · 出道與起步</div>
+  <h2 style="font-size:clamp(28px,3.4vw,46px)">輕快的銅管、少年感的形象</h2>
+  <ul class="facts" style="margin-top:18px">
+   <li><b>出道前</b>MBC 實境節目《Seventeen Project: Big Debut Plan》記錄出道前最後的準備。</li>
+   <li><b>17 Carat</b>出道作，是 Billboard 選出的 2015 年最佳 K-pop 專輯裡唯一的新人專輯。</li>
+   <li><b>Boys Be</b>成為當年銷量最高的新人專輯。</li>
+   <li><b>2016</b>〈Pretty U〉在《Show Champion》拿到第一個音樂節目一位；Love &amp; Letter 是第一張登上專輯榜冠軍的專輯。</li>
+  </ul>
+ </div>
+ <div class="folio"><span>Chapter one · 2015–2016</span><b>5 / 15</b></div>
+</section>
+
+<section class="s ink two dk" id="s6" aria-label="2017 成績突破">
+ <div class="mid">
+  <div class="kick">Chapter two · The turn</div>
+  <h2><span style="font-family:'Times New Roman',Times,serif">Don't Wanna Cry</span><br>成績突破的一首歌</h2>
+  <div class="jump"><span class="n">#94</span><span class="ar">→</span><span class="n" style="color:var(--rose)">#12</span><span class="note">韓國單曲榜最高名次：〈Mansae〉（2015）對比〈Don't Wanna Cry〉（2017）</span></div>
+  <div class="chap">
+   <span>0.5</span><div>「2017 SEVENTEEN Project」的序章：一系列影片和三支副標為 Chapter 0.5 的 MV。</div>
+   <span>1</span><div>第一章就是〈Don't Wanna Cry〉。曲風轉向 EDM 和 electropop，和早期輕快的情歌完全不同。</div>
+  </div>
+  <ul class="facts">
+   <li><b>6 次</b>音樂節目一位，橫跨 The Show、Music Bank、Show Champion、M Countdown；K-pop Hot 100 第 1 名。</li>
+   <li><b>MAMA 2017</b>最佳舞蹈表演男團獎；這也是他們第一支 YouTube 破 2 億觀看的 MV。</li>
+  </ul>
+  <p class="note" style="margin-top:12px">WOOZI 說這首歌不是分手歌，而是延續〈Smile Flower〉的情緒；歌曲條目則把歌詞描述為分手後的心碎，兩種說法並存。</p>
+ </div>
+ <div class="pic">
+  <figure><img src="img/dwc-mv.jpg" alt="Don't Wanna Cry MV 畫面"><span class="cap">〈Don't Wanna Cry〉MV</span></figure>
+  <div class="row2"><figure><img src="img/al1-cover.jpg" alt="Al1 專輯封面"></figure><div class="card sq" style="background:var(--rose);color:var(--ink)"><b>Al1</b>第 4 張迷你專輯，2017</div></div>
+ </div>
+ <div class="folio"><span>Chapter two · 2017</span><b>6 / 15</b></div>
+</section>
+
+<section class="s two" id="s7" aria-label="2017–2019 突破與成長">
+ <div class="mid">
+  <div class="kick">Chapter two · Growing up</div>
+  <h2>從 10 座一位，<br>到第一個大賞</h2>
+  <div class="stat">
+   <div><b>10 座</b>〈Home〉在每週音樂節目拿到的一位（You Made My Dawn，2019）</div>
+   <div><b>70 萬</b>An Ode（2019）首週銷量</div>
+   <div><b>大賞</b>An Ode 在 Asia Artist Awards 拿到年度專輯，是第一個大賞</div>
+  </div>
+  <ul class="facts">
+   <li><b>Teen, Age</b>第二張正規專輯（2017）；收錄曲〈CLAP〉的 MV，概念就是由 SEVENTEEN 自己製作 MV。</li>
+   <li><b>Director's Cut</b>2018 年的特別專輯，主打〈Thanks〉。</li>
+   <li><b>You Make My Day</b>第一張在韓國拿到白金認證的專輯；An Ode 也被 Billboard 評選為年度最佳 K-pop 專輯。</li>
+  </ul>
+ </div>
+ <div class="pic">
+  <div class="row2"><figure><img src="img/anode-cover.jpg" alt="An Ode 專輯封面"><span class="cap">An Ode，2019</span></figure><figure><img src="img/teenage-cover.jpg" alt="Teen, Age 專輯封面"><span class="cap">Teen, Age，2017</span></figure></div>
+  <div class="card" style="background:var(--sky)"><b>An Ode</b>第 3 張正規專輯，2019</div>
+ </div>
+ <div class="folio"><span>Chapter two · 2017–2019</span><b>7 / 15</b></div>
+</section>
+
+<section class="s sky two" id="s8" aria-label="2020–2021 百萬銷量與 Power of Love">
+ <div class="pic">
+  <div class="row2"><figure><img src="img/henggarae-cover.jpg" alt="Heng:garæ 專輯封面"><span class="cap">Heng:garæ，2020</span></figure><figure><img src="img/attacca-cover.jpg" alt="Attacca 專輯封面"><span class="cap">Attacca，2021</span></figure></div>
+  <div class="card" style="background:var(--paper)"><b>Power of Love</b>2021 年的系列計畫</div>
+ </div>
+ <div class="mid">
+  <div class="big">2020</div>
+  <div class="kick" style="margin-top:14px;color:var(--ink)">Chapter three · 百萬銷量與 Power of Love</div>
+  <h2 style="font-size:clamp(28px,3.4vw,46px)">一週破百萬，<br>再到雙百萬</h2>
+  <ul class="facts" style="margin-top:18px">
+   <li><b>Heng:garæ</b>不到一週賣出一百萬張，正式成為「百萬銷量歌手」。</li>
+   <li><b>; [Semicolon]</b>以「特別專輯」推出，主打〈Home;Run〉。</li>
+   <li><b>Your Choice</b>屬於 2021 年的 Power of Love 計畫，也是第一張進入美國 Billboard 200 的韓文專輯。</li>
+   <li><b>Attacca</b>第一張雙百萬銷量的專輯。同一年，成員全員續約。</li>
+  </ul>
+ </div>
+ <div class="folio"><span>Chapter three · 2020–2021</span><b>8 / 15</b></div>
+</section>
+
+<section class="s two" id="s9" aria-label="2022 Face the Sun">
+ <div class="pic"><figure><img src="img/fts-concept.jpg" alt="Face the Sun：成員走向夕陽"><span class="cap">Face the Sun，2022</span></figure></div>
+ <div class="mid">
+  <div class="kick">Chapter four · Face the Sun</div>
+  <h2>13 個人，<br>一起走出影子</h2>
+  <div class="chap" style="margin-top:20px">
+   <span>影</span><div>預告影片「13 Inner Shadows」裡，成員說「NOT SEVENTEEN anymore」；有一組概念照是唯一沒有團體照的一組。</div>
+   <span>日</span><div>一張圖裡 13 個點連起來，形成太陽的形狀。評論認為，專輯從黑暗走向光明，從「你和我」走向「我們」。</div>
+   <span>13</span><div>每一首歌都由 13 人全員演唱，沒有小分隊歌曲。主打〈HOT〉的 MV 是瘋狂麥斯風格的機車牛仔世界。</div>
+  </div>
+  <p class="note">之後的改版專輯 Sector 17，主打〈_World〉。</p>
+ </div>
+ <div class="folio"><span>Chapter four · 2022</span><b>9 / 15</b></div>
+</section>
+
+<section class="s rose two" id="s10" aria-label="2023 巔峰">
+ <div class="mid">
+  <div class="kick">Chapter four · The peak</div>
+  <h2>2023：<br>最會賣的一年</h2>
+  <div class="stat">
+   <div><b>450 萬</b>FML 首週銷量（預購 460 萬）</div>
+   <div><b>520 萬</b>Seventeenth Heaven 預購，K-pop 史上最多</div>
+   <div><b>冠軍</b>〈God of Music〉第一次登上 Circle 數位榜冠軍</div>
+  </div>
+  <ul class="facts">
+   <li><b>IFPI</b>FML 是 2023 年全球最暢銷的專輯。</li>
+   <li><b>MAMA</b>年度專輯：2023 年 FML、2024 年 Seventeenth Heaven。</li>
+   <li><b>Billboard 200</b>兩張都拿到第 2 名。</li>
+  </ul>
+ </div>
+ <div class="pic"><figure><img src="img/fml-group.jpg" alt="FML 時期的團體照"><span class="cap">FML，2023</span></figure></div>
+ <div class="folio"><span>Chapter four · 2023</span><b>10 / 15</b></div>
+</section>
+
+<section class="s ink two dk" id="s11" aria-label="2024–2025 十週年">
+ <div class="pic">
+  <div class="split"><figure><img src="img/hb-concept.jpg" alt="Happy Burstday 概念照：火焰與蠟燭"><span class="cap">Happy Burstday，2025</span></figure><div class="col"><figure><img src="img/hb-cover.jpg" alt="Happy Burstday 專輯封面"></figure><figure><img src="img/17irh-cover.jpg" alt="17 Is Right Here 專輯封面"><span class="cap">17 Is Right Here，2024</span></figure></div></div>
+ </div>
+ <div class="mid">
+  <div class="big">2025</div>
+  <div class="kick" style="margin-top:14px">Chapter five · 十週年</div>
+  <h2 style="font-size:clamp(28px,3.4vw,46px)">HAPPY BIRTHDAY<br>＋ BURST</h2>
+  <ul class="facts" style="margin-top:18px">
+   <li><b>17 Is Right Here</b>2024 年的精選輯，收錄歷年韓文單曲，新歌〈Maestro〉。</li>
+   <li><b>Happy Burstday</b>出道十週年當天發行，13 人全員參與；前一天在蠶室大橋舉辦約 10 萬人的 showcase。</li>
+   <li><b>DARE OR DEATH</b>概念影片要成員在「挑戰」和「安於現狀」之間選擇；評論把整個系列解讀為「重生」。</li>
+   <li><b>3 + 13</b>3 首團體歌，加上 13 位成員各一首個人曲。</li>
+  </ul>
+ </div>
+ <div class="folio"><span>Chapter five · 2024–2025</span><b>11 / 15</b></div>
+</section>
+
+<section class="s two" id="s12" aria-label="故事線：自己呼應自己">
+ <div class="mid">
+  <div class="kick">Storyline · Echoes</div>
+  <h2>他們的作品，<br>常常回頭引用自己</h2>
+  <div class="thread" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+   <div><div class="yr">2017</div>〈CLAP〉的 MV，概念就是由 SEVENTEEN 自己製作 MV。</div>
+   <div><div class="yr">2022</div>評論把 Face the Sun 和〈CLAP〉放在同一條「自製世界觀」的脈絡裡。<span class="who">Weverse Magazine 評論</span></div>
+   <div><div class="yr">2024</div>精選輯封面的每個房間都在呼應過去：棒球對應〈HOME;RUN〉、太陽對應〈HOT〉、船對應〈BOOMBOOM〉。<span class="who">粉絲分析</span></div>
+   <div><div class="yr">2024</div>〈MAESTRO〉的 MV 借用了出道曲〈Adore U〉的彈出選項。<span class="who">粉絲分析</span></div>
+  </div>
+ </div>
+ <div class="pic"><figure><img src="img/17irh-cover.jpg" alt="17 Is Right Here 封面：灰色房子的窗戶裡藏著各時期的符號"><span class="cap">找找看：每扇窗裡藏著哪個時期？</span></figure></div>
+ <div class="folio"><span>Storyline · Echoes</span><b>12 / 15</b></div>
+</section>
+
+<section class="s rose" id="s13" aria-label="故事線：CARAT 是故事的一部分">
+ <div class="mid">
+  <div class="kick">Storyline · Carat</div>
+  <h2>粉絲，被寫進了故事裡</h2>
+  <p style="margin-top:16px">從 Face the Sun 開始，CARAT 不只是聽眾，也成了專輯故事的一部分。</p>
+  <div class="thread">
+   <div><div class="yr">2022</div><h3>一起面對太陽</h3>評論認為，Face the Sun 的故事最後是邀請聽眾一起面對太陽。<span class="who">Weverse Magazine 評論</span></div>
+   <div><div class="yr">2022</div><h3>最後一塊拼圖</h3>改版 Sector 17 時期，聽眾被比喻成「最後一塊拼圖」。<span class="who">粉絲分析</span></div>
+   <div><div class="yr">2024</div><h3>傾聽粉絲</h3>Spill the Feels 被形容為內省、傾聽粉絲聲音的作品。<span class="who">Weverse Magazine 評論</span></div>
+   <div><div class="yr">2025</div><h3>〈Jungle〉</h3>S.COUPS 在十週年專輯的收尾曲裡，坦白自己需要粉絲和愛。<span class="who">Weverse Magazine 評論</span></div>
+  </div>
+ </div>
+ <div class="folio"><span>Storyline · Carat</span><b>13 / 15</b></div>
+</section>
+
+<section class="s" id="s14" aria-label="數字看成長">
+ <div class="mid">
+  <div class="kick">By the numbers</div>
+  <h2>韓國累計銷量：<br>從約 20 萬張，到 640 萬張</h2>
+  <div class="bars" id="bars"></div>
+  <p class="note" style="margin-top:14px">韓國累計銷量，不是首週銷量；紅色是十年來最高的 FML。資料：Wikipedia discography（2026-11-23 擷取）。</p>
+ </div>
+ <div class="folio"><span>By the numbers</span><b>14 / 15</b></div>
+</section>
+
+<section class="s ink dk" id="s15" aria-label="入坑推薦與總結">
+ <div class="mid">
+  <div class="kick">Start here</div>
+  <h2>每個時期，先聽這一首</h2>
+  <div class="picks">
+   <div><span class="yr">出道與起步</span><b>Pretty U</b><span>拿下第一個音樂節目一位的歌</span></div>
+   <div><span class="yr">突破與成長</span><b>Don't Wanna Cry</b><span>曲風轉向成熟的成績突破之作</span></div>
+   <div><span class="yr">Power of Love</span><b>Rock with You</b><span>第一張雙百萬專輯 Attacca 的主打</span></div>
+   <div><span class="yr">Face the Sun</span><b>HOT</b><span>走出影子、面對太陽的那張專輯</span></div>
+   <div><span class="yr">十週年</span><b>Thunder</b><span>宣告「重生」的十週年主打</span></div>
+  </div>
+  <h3 style="max-width:30em">十年下來，SEVENTEEN 從自己寫的少年情歌出發，一路把 13 個人和粉絲都寫進了同一個故事裡。</h3>
+  <p class="note" style="margin-top:22px">照片來源：PLEDIS Entertainment。內容依據本專案 LLM Wiki 的 9 篇來源（Wikipedia、Soompi、Weverse Magazine、ABS-CBN、官方專輯名稱、粉絲分析）整理；標示「評論」或「粉絲分析」的是解讀，不是官方說法。</p>
+ </div>
+ <div class="folio"><span>Start here</span><b>15 / 15</b></div>
+</section>
+
+</main>
+<nav class="nav" id="nav" aria-label="投影片導覽"></nav>
+<div class="btns"><button id="prev" aria-label="上一張">‹</button><button id="next" aria-label="下一張">›</button></div>
+<script>
+{
+const sales=[["17 Carat","2015",205389],["Love & Letter","2016",337568],["Al1","2017",586484],["An Ode","2019",1688230],["Heng:garæ","2020",1846130],["Attacca","2021",3077450],["Face the Sun","2022",4758777],["FML","2023",6402699],["Seventeenth Heaven","2023",5954356],["Happy Burstday","2025",2987300]];
+const max=Math.max(...sales.map(r=>r[2]));
+document.getElementById("bars").innerHTML=sales.map(([n,y,v])=>`<div class="bar${v===max?" hi":""}"><span>${n.replace(/&/g,"&amp;")} <span class="y">${y}</span></span><i style="width:${(v/max*100).toFixed(1)}%"></i><span class="v">${v.toLocaleString("en-US")}</span></div>`).join("");
+const deck=document.getElementById("deck"),slides=[...deck.querySelectorAll(".s")],nav=document.getElementById("nav");
+nav.innerHTML=slides.map(s=>`<a href="#${s.id}" aria-label="${s.getAttribute("aria-label")}"></a>`).join("");
+const dots=[...nav.children];
+let cur=0;
+const io=new IntersectionObserver(es=>{for(const e of es){if(e.isIntersecting){cur=slides.indexOf(e.target);dots.forEach((d,i)=>d.classList.toggle("on",i===cur));}}},{root:deck,threshold:.55});
+slides.forEach(s=>io.observe(s));
+const go=i=>{i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({block:"start"});};
+document.getElementById("prev").onclick=()=>go(cur-1);
+document.getElementById("next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{if(["ArrowRight","ArrowDown","PageDown"," "].includes(e.key)){e.preventDefault();go(cur+1);}else if(["ArrowLeft","ArrowUp","PageUp"].includes(e.key)){e.preventDefault();go(cur-1);}else if(e.key==="Home"){go(0);}else if(e.key==="End"){go(slides.length-1);}});
+const fromHash=()=>{const i=slides.findIndex(s=>"#"+s.id===location.hash);if(i>=0)go(i);};
+addEventListener("hashchange",fromHash);fromHash();
+}
+</script>
+</body>
+</html>
