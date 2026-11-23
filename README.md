@@ -3,8 +3,7 @@
 用 LLM Wiki 做一份教學 HTML 簡報的課堂作業。主題是 SEVENTEEN 出道以來的韓文專輯，重點放在每張專輯的**概念與故事線**，以及**成績與里程碑**。
 
 - **教學簡報**：`slides/index.html`：https://ting914.github.io/seventeen-llm-wiki/slides/
-- **作業繳交說明**（loop/graph 流程圖、實際執行紀錄、反思）：https://claude.ai/artifact/4kxQaa8ttepH4J9XCACLBR
-
+- 
 ## 架構
 
 參考 Andrej Karpathy 提出的 LLM Wiki 做法，分成三層：
